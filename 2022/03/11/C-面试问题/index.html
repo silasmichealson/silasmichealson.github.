@@ -16,18 +16,18 @@
   <meta name="author" content="silas">
   <meta name="keywords" content="">
   
-    <meta name="description" content="c&#x2F; c++面试笔试1.c++的知道哪些C语言字符串拷贝的方法####(1) 第一个strcpy()使用头文件：#include &lt;string.h&gt;   定义：char *strcpy(char *dest, const char *src);  参数： destinin：目标字符数组； source：源字符数组；  函数说明：   strcpy()会将参数src 字符串拷">
+    <meta name="description" content="c&#x2F; c++面试笔试1.c++的知道哪些C语言字符串拷贝的方法(1) 第一个strcpy()使用头文件：#include &lt;string.h&gt;   定义：char *strcpy(char *dest, const char *src);  参数： destinin：目标字符数组； source：源字符数组；  函数说明：   strcpy()会将参数src 字符串拷贝至参数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++面试问题">
 <meta property="og:url" content="http://example.com/2022/03/11/C-%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="silas的博客">
-<meta property="og:description" content="c&#x2F; c++面试笔试1.c++的知道哪些C语言字符串拷贝的方法####(1) 第一个strcpy()使用头文件：#include &lt;string.h&gt;   定义：char *strcpy(char *dest, const char *src);  参数： destinin：目标字符数组； source：源字符数组；  函数说明：   strcpy()会将参数src 字符串拷">
+<meta property="og:description" content="c&#x2F; c++面试笔试1.c++的知道哪些C语言字符串拷贝的方法(1) 第一个strcpy()使用头文件：#include &lt;string.h&gt;   定义：char *strcpy(char *dest, const char *src);  参数： destinin：目标字符数组； source：源字符数组；  函数说明：   strcpy()会将参数src 字符串拷贝至参数">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/03/11/C-%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/p1.png">
 <meta property="og:image" content="http://example.com/2022/03/11/C-%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/p2.png">
 <meta property="og:image" content="http://example.com/2022/03/11/C-%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/p3.png">
 <meta property="article:published_time" content="2022-03-11T04:40:21.000Z">
-<meta property="article:modified_time" content="2022-03-11T04:55:08.756Z">
+<meta property="article:modified_time" content="2022-03-12T08:24:39.979Z">
 <meta property="article:author" content="silas">
 <meta property="article:tag" content="面试">
 <meta property="article:tag" content="c++">
@@ -268,7 +268,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="c-x2F-c-面试笔试"><a href="#c-x2F-c-面试笔试" class="headerlink" title="c&#x2F; c++面试笔试"></a>c&#x2F; c++面试笔试</h1><h3 id="1-c-的知道哪些C语言字符串拷贝的方法"><a href="#1-c-的知道哪些C语言字符串拷贝的方法" class="headerlink" title="1.c++的知道哪些C语言字符串拷贝的方法"></a>1.c++的知道哪些C语言字符串拷贝的方法</h3><p>####(1) 第一个strcpy()<br>使用头文件：#include &lt;string.h&gt;  </p>
+              <h1 id="c-x2F-c-面试笔试"><a href="#c-x2F-c-面试笔试" class="headerlink" title="c&#x2F; c++面试笔试"></a>c&#x2F; c++面试笔试</h1><h3 id="1-c-的知道哪些C语言字符串拷贝的方法"><a href="#1-c-的知道哪些C语言字符串拷贝的方法" class="headerlink" title="1.c++的知道哪些C语言字符串拷贝的方法"></a>1.c++的知道哪些C语言字符串拷贝的方法</h3><h4 id="1-第一个strcpy"><a href="#1-第一个strcpy" class="headerlink" title="(1) 第一个strcpy()"></a>(1) 第一个strcpy()</h4><p>使用头文件：#include &lt;string.h&gt;  </p>
 <pre><code class="hljs">定义：char *strcpy(char *dest, const char *src);
 
 参数：
@@ -342,8 +342,8 @@ len：复制的字符串长度。
 <p>函数说明：memmove()复制 src 所指的内存数据的 n 个字节到 dest所指的内存地址上。也就是从源地址复制n 个字节到目标地址。<br><strong>如果目标区域和源区域有重叠的话，memmove能够保证源串在被覆盖之前将重叠区域的字节拷贝到目标区域中，但复制后源内容会被更改。但是当目标区域与源区域没有重叠则和memcpy函数功能相同。</strong></p>
 <h3 id="2-new-和-malloc的区别"><a href="#2-new-和-malloc的区别" class="headerlink" title="2.new 和 malloc的区别"></a>2.new 和 malloc的区别</h3><h4 id="1-申请的内存所在位置"><a href="#1-申请的内存所在位置" class="headerlink" title="(1). 申请的内存所在位置"></a>(1). 申请的内存所在位置</h4><p> new操作符从自由存储区（free store）上为对象动态分配内存空间，<br> malloc函数从堆上动态分配内存。<br> 自由存储区是C++基于new操作符的一个抽象概念，凡是通过new操作符进行内存申请，该内存即为自由存储区。而堆是操作系统中的术语，是操作系统所维护的一块特殊内存，用于程序的内存动态分配，C语言使用malloc从堆上分配内存，使用free释放已分配的对应内存。</p>
 <p><strong>那么自由存储区是否能够是堆（问题等价于new是否能在堆上动态分配内存），这取决于operator new 的实现细节。自由存储区不仅可以是堆，还可以是静态存储区，这都看operator new在哪里为对象分配内存。</strong></p>
-<p>####(2).返回类型安全性<br><strong>new操作符内存分配成功时，返回的是对象类型的指针</strong>，类型严格与对象匹配，无须进行类型转换，故new是符合类型安全性的操作符。<br><strong>而malloc内存分配成功则是返回void 星</strong> ，需要通过强制类型转换将void*指针转换成我们需要的类型。</p>
-<p>####(3).内存分配失败时的返回值<br><strong>new内存分配失败时，会抛出bac_alloc异常，它不会返回NULL；malloc分配内存失败时返回NULL。</strong></p>
+<h4 id="2-返回类型安全性"><a href="#2-返回类型安全性" class="headerlink" title="(2).返回类型安全性"></a>(2).返回类型安全性</h4><p><strong>new操作符内存分配成功时，返回的是对象类型的指针</strong>，类型严格与对象匹配，无须进行类型转换，故new是符合类型安全性的操作符。<br><strong>而malloc内存分配成功则是返回void 星</strong> ，需要通过强制类型转换将void*指针转换成我们需要的类型。</p>
+<h4 id="3-内存分配失败时的返回值"><a href="#3-内存分配失败时的返回值" class="headerlink" title="(3).内存分配失败时的返回值"></a>(3).内存分配失败时的返回值</h4><p><strong>new内存分配失败时，会抛出bac_alloc异常，它不会返回NULL；malloc分配内存失败时返回NULL。</strong></p>
 <pre><code class="hljs">try
 &#123;
 int *a = new int();
@@ -354,8 +354,8 @@ catch (bad_alloc)
 &#125;
 </code></pre>
 <p>如果你想顺便了解下异常基础，可以看<a target="_blank" rel="noopener" href="http://www.cnblogs.com/QG-whz/p/5136883.html">http://www.cnblogs.com/QG-whz/p/5136883.html</a> C++ 异常机制分析。</p>
-<p>####(4).是否需要指定内存大小<br>使用new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息自行计算，而malloc则需要显式地指出所需内存的尺寸。</p>
-<p>####(5).是否调用构造函数&#x2F;析构函数<br>使用new操作符来分配对象内存时会经历三个步骤：</p>
+<h4 id="4-是否需要指定内存大小"><a href="#4-是否需要指定内存大小" class="headerlink" title="(4).是否需要指定内存大小"></a>(4).是否需要指定内存大小</h4><p>使用new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息自行计算，而malloc则需要显式地指出所需内存的尺寸。</p>
+<h4 id="5-是否调用构造函数-x2F-析构函数"><a href="#5-是否调用构造函数-x2F-析构函数" class="headerlink" title="(5).是否调用构造函数&#x2F;析构函数"></a>(5).是否调用构造函数&#x2F;析构函数</h4><p>使用new操作符来分配对象内存时会经历三个步骤：</p>
 <pre><code class="hljs">第一步：调用operator new 函数（对于数组是operator new[]）分配一块足够大的，原始的，未命名的内存空间以便存储特定类型的对象。
 第二步：编译器运行相应的构造函数以构造对象，并为其传入初值。
 第三部：对象构造完成后，返回一个指向该对象的指针。
@@ -365,17 +365,16 @@ catch (bad_alloc)
 第二步：编译器调用operator delete(或operator delete[])函数释放内存空间。  
 </code></pre>
 <p>总之来说，<strong>new&#x2F;delete会调用对象的构造函数&#x2F;析构函数以完成对象的构造&#x2F;析构。而malloc则不会。</strong></p>
-<p>####(6).对数组的处理</p>
-<p>new对数组的支持体现在它会分别调用构造函数函数初始化每一个数组元素，释放对象时为每个对象调用析构函数。</p>
+<h4 id="6-对数组的处理"><a href="#6-对数组的处理" class="headerlink" title="(6).对数组的处理"></a>(6).对数组的处理</h4><p>new对数组的支持体现在它会分别调用构造函数函数初始化每一个数组元素，释放对象时为每个对象调用析构函数。</p>
 <ul>
 <li><p>注意delete[]要与new[]配套使用，不然会找出数组对象部分释放的现象，造成内存泄漏。</p>
 </li>
 <li><p>至于malloc，它并知道你在这块内存上要放的数组还是啥别的东西，反正它就给你一块原始的内存，在给你个内存的地址就完事。所以如果要动态分配一个数组的内存，还需要我们手动自定数组的大小：</p>
 </li>
 </ul>
-<p>####(7).new与malloc是否可以相互调用<br>operator new &#x2F;operator delete的实现可以基于malloc，而malloc的实现不可以去调用new。下面是编写operator new &#x2F;operator delete 的一种简单方式，其他版本也与之类似：</p>
-<p>####(8).是否可以被重载<br>opeartor new &#x2F;operator delete可以被重载。标准库是定义了operator new函数和operator delete函数的8个重载版本：而malloc&#x2F;free并不允许重载。</p>
-<p>####(9). 能够直观地重新分配内存<br>使用malloc分配的内存后，如果在使用过程中发现内存不足，<strong>可以使用realloc函数进行内存重新分配实现内存的扩充</strong>。realloc先判断当前的指针所指内存是否有足够的连续空间，如果有，原地扩大可分配的内存地址，并且返回原来的地址指针；如果空间不够，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，而后释放原来的内存区域。</p>
+<h4 id="7-new与malloc是否可以相互调用"><a href="#7-new与malloc是否可以相互调用" class="headerlink" title="(7).new与malloc是否可以相互调用"></a>(7).new与malloc是否可以相互调用</h4><p>operator new &#x2F;operator delete的实现可以基于malloc，而malloc的实现不可以去调用new。下面是编写operator new &#x2F;operator delete 的一种简单方式，其他版本也与之类似：</p>
+<h4 id="8-是否可以被重载"><a href="#8-是否可以被重载" class="headerlink" title="(8).是否可以被重载"></a>(8).是否可以被重载</h4><p>opeartor new &#x2F;operator delete可以被重载。标准库是定义了operator new函数和operator delete函数的8个重载版本：而malloc&#x2F;free并不允许重载。</p>
+<h4 id="9-能够直观地重新分配内存"><a href="#9-能够直观地重新分配内存" class="headerlink" title="(9). 能够直观地重新分配内存"></a>(9). 能够直观地重新分配内存</h4><p>使用malloc分配的内存后，如果在使用过程中发现内存不足，<strong>可以使用realloc函数进行内存重新分配实现内存的扩充</strong>。realloc先判断当前的指针所指内存是否有足够的连续空间，如果有，原地扩大可分配的内存地址，并且返回原来的地址指针；如果空间不够，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，而后释放原来的内存区域。</p>
 <p>new没有这样直观的配套设施来扩充内存。</p>
 <h4 id="10-客户处理内存分配不足"><a href="#10-客户处理内存分配不足" class="headerlink" title="(10). 客户处理内存分配不足"></a>(10). 客户处理内存分配不足</h4><p>在operator new抛出异常以反映一个未获得满足的需求之前，它会先调用一个用户指定的错误处理函数，这就是new-handler。对于malloc，客户并不能够去编程决定内存不足以分配时要干什么事，只能看着malloc返回NULL。</p>
 <h3 id="3-unix-的初始化和启动"><a href="#3-unix-的初始化和启动" class="headerlink" title="3. unix 的初始化和启动"></a>3. unix 的初始化和启动</h3><h4 id="1-unix系统的初始引导过程"><a href="#1-unix系统的初始引导过程" class="headerlink" title="(1)unix系统的初始引导过程"></a>(1)unix系统的初始引导过程</h4><pre><code class="hljs">unix从硬件加电到--&gt;ROM BIOS（检查硬件系统的配置，找到硬盘0号扇区）--&gt;将0号扇区读入内存
@@ -483,8 +482,7 @@ init进程--&gt;
 <h3 id="6-操作系统内存管理"><a href="#6-操作系统内存管理" class="headerlink" title="6.操作系统内存管理"></a>6.操作系统内存管理</h3><p>分段 分页 段页式</p>
 <h3 id="7-new-的底层实现"><a href="#7-new-的底层实现" class="headerlink" title="7.new 的底层实现"></a>7.new 的底层实现</h3><p>operator_num malloc </p>
 <h3 id="8-stl的vector-和-map-x2F-set-无序的map怎么排序"><a href="#8-stl的vector-和-map-x2F-set-无序的map怎么排序" class="headerlink" title="8.stl的vector 和 map&#x2F;set 无序的map怎么排序"></a>8.stl的vector 和 map&#x2F;set 无序的map怎么排序</h3><p>key 和 value 对键值和value的排序通过修改compare的函数</p>
-<h3 id="9-多线程-的同步方式-多进程的-通信方式"><a href="#9-多线程-的同步方式-多进程的-通信方式" class="headerlink" title="9. 多线程 的同步方式,多进程的 通信方式"></a>9. 多线程 的同步方式,多进程的 通信方式</h3><p>####(1) 进程间通讯：</p>
-<ol>
+<h3 id="9-多线程-的同步方式-多进程的-通信方式"><a href="#9-多线程-的同步方式-多进程的-通信方式" class="headerlink" title="9. 多线程 的同步方式,多进程的 通信方式"></a>9. 多线程 的同步方式,多进程的 通信方式</h3><h4 id="1-进程间通讯："><a href="#1-进程间通讯：" class="headerlink" title="(1) 进程间通讯："></a>(1) 进程间通讯：</h4><ol>
 <li><p>管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</p>
 </li>
 <li><p>有名管道 (namedpipe) ： 有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</p>
@@ -503,8 +501,7 @@ init进程--&gt;
 </li>
 </ol>
 <p>注意：临界区则是一种概念，指的是访问公共资源的程序片段，并不是一种通信方式。</p>
-<p>####(2) 线程通讯：  </p>
-<ol>
+<h4 id="2-线程通讯："><a href="#2-线程通讯：" class="headerlink" title="(2) 线程通讯："></a>(2) 线程通讯：</h4><ol>
 <li>互斥锁提供了以排他方式防止数据结构被并发修改的方法。  </li>
 <li>读写锁允许多个线程同时读共享数据，而对写操作是互斥的。    </li>
 <li>条件变量可以以原子的方式阻塞进程，直到某个特定条件为真为止。对条件的测试是在互斥锁的保护下进行的。条件变量始终与互斥锁一起使用。  </li>
@@ -719,13 +716,6 @@ void QSort(T arr[],int low,int high)
   <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="category-chain-item">个人博客</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%8B%9B%E8%81%98%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86%E6%95%B4%E7%90%86/" class="category-chain-item">招聘面试经历整理</a>
-  
-  
-
-  
 
       </span>
     
@@ -794,6 +784,12 @@ void QSort(T arr[],int low,int high)
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/03/12/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" title="算法学习(第一部分)-性能分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法学习(第一部分)-性能分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
