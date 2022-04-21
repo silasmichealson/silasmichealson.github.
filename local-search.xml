@@ -4,6 +4,93 @@
   
   
   <entry>
+    <title>vm_ware+CentOS7 网络配置及换源教程</title>
+    <link href="/2022/04/21/vm-ware-CentOS7-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/"/>
+    <url>/2022/04/21/vm-ware-CentOS7-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>毕业设计</category>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux系统</tag>
+      
+      <tag>环境搭建</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vm_ware虚拟机安装CentOS7教程</title>
+    <link href="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/"/>
+    <url>/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="VM-Ware虚拟机-CentOS-7-系统安装教程"><a href="#VM-Ware虚拟机-CentOS-7-系统安装教程" class="headerlink" title="VM_Ware虚拟机+CentOS 7 系统安装教程"></a>VM_Ware虚拟机+CentOS 7 系统安装教程</h1><h2 id="0-安装环境"><a href="#0-安装环境" class="headerlink" title="0.安装环境"></a>0.安装环境</h2><blockquote><p>Windows 10 + vmware 15 + centos 7.9</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/Windows.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/vmware.jpg"></p><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><h3 id="1-下载CentOS镜像"><a href="#1-下载CentOS镜像" class="headerlink" title="(1)下载CentOS镜像"></a>(1)下载CentOS镜像</h3><p>可以访问<a href="https://mirrors.aliyun.com/centos">阿里云的CentOS镜像网站</a>进行下载</p><h4 id="step1-访问网站"><a href="#step1-访问网站" class="headerlink" title="step1:访问网站"></a>step1:访问网站</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/1.jpg"></p><h4 id="step2-找到对应版本"><a href="#step2-找到对应版本" class="headerlink" title="step2:找到对应版本"></a>step2:找到对应版本</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/2.jpg"></p><h4 id="step3-进入文件夹找到isos镜像文件夹"><a href="#step3-进入文件夹找到isos镜像文件夹" class="headerlink" title="step3:进入文件夹找到isos镜像文件夹"></a>step3:进入文件夹找到isos镜像文件夹</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/3.jpg"></p><h4 id="step4-找到X86-64文件夹"><a href="#step4-找到X86-64文件夹" class="headerlink" title="step4:找到X86_64文件夹"></a>step4:找到X86_64文件夹</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/4.jpg"></p><h4 id="step5-根据个人需求下载对应的镜像-可以阅读此文件下的0-README-txt文件查看不同版本的区别-readme文件翻译部分放在下面-注意-记住下载的位置-之后安装会使用到"><a href="#step5-根据个人需求下载对应的镜像-可以阅读此文件下的0-README-txt文件查看不同版本的区别-readme文件翻译部分放在下面-注意-记住下载的位置-之后安装会使用到" class="headerlink" title="step5:根据个人需求下载对应的镜像(可以阅读此文件下的0_README.txt文件查看不同版本的区别,readme文件翻译部分放在下面)注意:记住下载的位置,之后安装会使用到"></a>step5:根据个人需求下载对应的镜像(可以阅读此文件下的0_README.txt文件查看不同版本的区别,readme文件翻译部分放在下面)<strong>注意:记住下载的位置,之后安装会使用到</strong></h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/5.jpg"></p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs subunit">CentOS<span class="hljs-string">-7</span>-x86_64-DVD<span class="hljs-string">-1804</span>.iso<br>这个DVD image包含了可以使用下载器下载的所有包。想使用CentOS的小伙伴都可以下载这个image，面向大部分用户。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-NetInstall<span class="hljs-string">-1804</span>.iso<br>这是网络安装和救援image。安装人员会询问应该从哪里获取要安装的软件包。如果您有CentOS软件包的本地镜像，则非常有用。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-Everything<span class="hljs-string">-1804</span>.iso<br>这个image包含Centos Linux 7完整的软件包，可用于安装或填充本地镜像。此图像需要16GB USB 闪存，因为它太大了（9G）。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-LiveGNOME<span class="hljs-string">-1804</span>.iso<br>CentOS<span class="hljs-string">-7</span>-x86_64-LiveKDE<span class="hljs-string">-1804</span>.iso<br>这些images是CentOS Linux 7的Live image。根据名称，它们使用相应的显示管理器。它们专为测试目的和探索CentOS Linux 7环境而设计。除非您选择从Live环境中安装CentOS Linux 7，否则它们不会修改硬盘的内容。请注意，在这种情况下，您无法更改已安装的软件包集。这需要使用yum在已安装的系统中完成。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-Minimal<span class="hljs-string">-1804</span>.iso<br>这个image的目的是安装一个非常基本的CentOS Linux 7系统，只需要最少的软件包即可拥有一个功能系统。请将此图像刻录到CD上并启动计算机。系统上将安装一组预先选择的软件包。其他所有东西都需要使用yum安装。此映像安装的软件包集与从完整DVD映像中选择名为“Minimal”的组时安装的软件包相同。<br><br></code></pre></td></tr></table></figure><h2 id="2-系统安装"><a href="#2-系统安装" class="headerlink" title="2.系统安装"></a>2.系统安装</h2><h3 id="1-虚拟机配置"><a href="#1-虚拟机配置" class="headerlink" title="(1)虚拟机配置"></a>(1)虚拟机配置</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos1.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos2.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos3.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos4.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos5.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos6.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos7.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos8.jpg"></p><blockquote><p>此处网络配置 我选择的是使用本机的ip访问外部网络,如果不需要网络或者只在主机和虚拟机通信可以选择对应的选项.而需要独立的ip可以选择桥接模式</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos9.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos10.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos11.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos12.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos13.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos14.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos15.jpg"></p><h3 id="2-虚拟机挂载镜像"><a href="#2-虚拟机挂载镜像" class="headerlink" title="(2)虚拟机挂载镜像"></a>(2)虚拟机挂载镜像</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos16.jpg"></p><blockquote><p>此处使用到之前下载的镜像文件</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos17.jpg"></p><blockquote><p>开启虚拟机则进入安装过程</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos18.jpg"></p><h3 id="3-系统安装及初始化"><a href="#3-系统安装及初始化" class="headerlink" title="(3)系统安装及初始化"></a>(3)系统安装及初始化</h3><blockquote><p>选择第一项 安装即可</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos19.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos20.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos21.jpg"></p><blockquote><p>注意:<strong>此处软件选择,需要图形界面选择gui图形界面,我选择最小安装则无图型界面,只有命令行,如果是初学者还是选择有gui图形界面的安装</strong></p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos22.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos23.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos24.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos25.jpg"></p><blockquote><p>注意:<strong>root密码一定要记住,最好创建一个用户,不要在root下使用(很危险)</strong></p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos26.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos27.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos28.jpg"></p><blockquote><p>重启后系统已经在运行,这里提示登录,由于刚刚已经创建了用户,可以输入用户名,回车后输入密码登录</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos29.jpg"></p><blockquote><p>到这里已经安装完成,使用<code>uname -a</code>指令看一下系统信息,这样就安装成功了</p></blockquote><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos30.jpg"></p><h3 id="4-创建系统快照-出问题可以回溯"><a href="#4-创建系统快照-出问题可以回溯" class="headerlink" title="(4)创建系统快照,出问题可以回溯"></a>(4)创建系统快照,出问题可以回溯</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos31.jpg"></p><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos32.jpg"></p><h2 id="3-借鉴网址"><a href="#3-借鉴网址" class="headerlink" title="3.借鉴网址"></a>3.借鉴网址</h2><ol><li>感兴趣的可以参考<a href="https://www.haah.net/vm-station">虚拟机建站博客</a></li><li><a href="https://zhuanlan.zhihu.com/p/145102034">知乎帖子</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>毕业设计</category>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux系统</tag>
+      
+      <tag>环境搭建</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>A-Tune的centos安装</title>
+    <link href="/2022/04/20/A-Tune%E7%9A%84centos%E5%AE%89%E8%A3%85/"/>
+    <url>/2022/04/20/A-Tune%E7%9A%84centos%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h1 id="A-Tune在CentOS的移植"><a href="#A-Tune在CentOS的移植" class="headerlink" title="A-Tune在CentOS的移植"></a>A-Tune在CentOS的移植</h1><h2 id="第一-安装环境"><a href="#第一-安装环境" class="headerlink" title="第一.安装环境"></a>第一.安装环境</h2><h3 id="vm-ware虚拟机-centos-7-9"><a href="#vm-ware虚拟机-centos-7-9" class="headerlink" title="vm ware虚拟机 + centos 7.9"></a>vm ware虚拟机 + centos 7.9</h3><p><img src="/a1.jpg"></p><h2 id="第二-安装步骤"><a href="#第二-安装步骤" class="headerlink" title="第二.安装步骤"></a>第二.安装步骤</h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h3><p>系统应该配置网络,保证可以ping通外网,具体实现借鉴可以我的另一篇博客</p><p>由于CentOS使用的yum源 和 pip源会出现连接问题 ,可以将其换为国内的源</p><h2 id="第三-遇到的问题与解决"><a href="#第三-遇到的问题与解决" class="headerlink" title="第三.遇到的问题与解决"></a>第三.遇到的问题与解决</h2><h2 id="第四-借鉴网址"><a href="#第四-借鉴网址" class="headerlink" title="第四.借鉴网址"></a>第四.借鉴网址</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>毕业设计</category>
+      
+      <category>A-Tune</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>A-Tune</tag>
+      
+      <tag>Linux系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo博客搭建和使用</title>
     <link href="/2022/03/22/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
     <url>/2022/03/22/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
@@ -150,6 +237,8 @@
       
       <category>个人博客</category>
       
+      <category>招聘面试经历</category>
+      
     </categories>
     
     
@@ -177,7 +266,7 @@
       
       <category>个人博客</category>
       
-      <category>招聘面试经历整理</category>
+      <category>招聘面试经历</category>
       
     </categories>
     

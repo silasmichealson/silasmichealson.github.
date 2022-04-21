@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="silas">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="VM_Ware虚拟机+CentOS 7 系统安装教程0.安装环境 Windows 10 + vmware 15 + centos 7.9    1.准备工作(1)下载CentOS镜像可以访问阿里云的CentOS镜像网站进行下载 step1:访问网站 step2:找到对应版本 step3:进入文件夹找到isos镜像文件夹 step4:找到X86_64文件夹 step5:根据个人需求下载对应的镜像(可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vm_ware虚拟机安装CentOS7教程">
+<meta property="og:url" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="silas的博客">
+<meta property="og:description" content="VM_Ware虚拟机+CentOS 7 系统安装教程0.安装环境 Windows 10 + vmware 15 + centos 7.9    1.准备工作(1)下载CentOS镜像可以访问阿里云的CentOS镜像网站进行下载 step1:访问网站 step2:找到对应版本 step3:进入文件夹找到isos镜像文件夹 step4:找到X86_64文件夹 step5:根据个人需求下载对应的镜像(可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/Windows.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/vmware.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/1.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/2.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/3.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/4.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/5.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos1.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos2.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos3.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos4.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos5.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos6.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos7.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos8.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos9.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos10.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos11.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos12.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos13.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos14.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos15.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos16.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos17.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos18.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos19.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos20.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos21.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos22.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos23.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos24.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos25.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos26.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos27.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos28.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos29.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos30.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos31.jpg">
+<meta property="og:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos32.jpg">
+<meta property="article:published_time" content="2022-04-20T23:50:39.000Z">
+<meta property="article:modified_time" content="2022-04-21T01:42:26.975Z">
+<meta property="article:author" content="silas">
+<meta property="article:tag" content="Linux系统">
+<meta property="article:tag" content="环境搭建">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/Windows.jpg">
+  
+  
+  <title>vm_ware虚拟机安装CentOS7教程 - silas的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Silas</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="vm_ware虚拟机安装CentOS7教程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-21 07:50" pubdate>
+          2022年4月21日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vm_ware虚拟机安装CentOS7教程</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="VM-Ware虚拟机-CentOS-7-系统安装教程"><a href="#VM-Ware虚拟机-CentOS-7-系统安装教程" class="headerlink" title="VM_Ware虚拟机+CentOS 7 系统安装教程"></a>VM_Ware虚拟机+CentOS 7 系统安装教程</h1><h2 id="0-安装环境"><a href="#0-安装环境" class="headerlink" title="0.安装环境"></a>0.安装环境</h2><blockquote>
+<p>Windows 10 + vmware 15 + centos 7.9</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/Windows.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/vmware.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><h3 id="1-下载CentOS镜像"><a href="#1-下载CentOS镜像" class="headerlink" title="(1)下载CentOS镜像"></a>(1)下载CentOS镜像</h3><p>可以访问<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/centos">阿里云的CentOS镜像网站</a>进行下载</p>
+<h4 id="step1-访问网站"><a href="#step1-访问网站" class="headerlink" title="step1:访问网站"></a>step1:访问网站</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/1.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="step2-找到对应版本"><a href="#step2-找到对应版本" class="headerlink" title="step2:找到对应版本"></a>step2:找到对应版本</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/2.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="step3-进入文件夹找到isos镜像文件夹"><a href="#step3-进入文件夹找到isos镜像文件夹" class="headerlink" title="step3:进入文件夹找到isos镜像文件夹"></a>step3:进入文件夹找到isos镜像文件夹</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/3.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="step4-找到X86-64文件夹"><a href="#step4-找到X86-64文件夹" class="headerlink" title="step4:找到X86_64文件夹"></a>step4:找到X86_64文件夹</h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/4.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="step5-根据个人需求下载对应的镜像-可以阅读此文件下的0-README-txt文件查看不同版本的区别-readme文件翻译部分放在下面-注意-记住下载的位置-之后安装会使用到"><a href="#step5-根据个人需求下载对应的镜像-可以阅读此文件下的0-README-txt文件查看不同版本的区别-readme文件翻译部分放在下面-注意-记住下载的位置-之后安装会使用到" class="headerlink" title="step5:根据个人需求下载对应的镜像(可以阅读此文件下的0_README.txt文件查看不同版本的区别,readme文件翻译部分放在下面)注意:记住下载的位置,之后安装会使用到"></a>step5:根据个人需求下载对应的镜像(可以阅读此文件下的0_README.txt文件查看不同版本的区别,readme文件翻译部分放在下面)<strong>注意:记住下载的位置,之后安装会使用到</strong></h4><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/5.jpg" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs subunit">CentOS<span class="hljs-string">-7</span>-x86_64-DVD<span class="hljs-string">-1804</span>.iso<br>这个DVD image包含了可以使用下载器下载的所有包。想使用CentOS的小伙伴都可以下载这个image，面向大部分用户。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-NetInstall<span class="hljs-string">-1804</span>.iso<br>这是网络安装和救援image。安装人员会询问应该从哪里获取要安装的软件包。如果您有CentOS软件包的本地镜像，则非常有用。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-Everything<span class="hljs-string">-1804</span>.iso<br>这个image包含Centos Linux 7完整的软件包，可用于安装或填充本地镜像。此图像需要16GB USB 闪存，因为它太大了（9G）。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-LiveGNOME<span class="hljs-string">-1804</span>.iso<br>CentOS<span class="hljs-string">-7</span>-x86_64-LiveKDE<span class="hljs-string">-1804</span>.iso<br>这些images是CentOS Linux 7的Live image。根据名称，它们使用相应的显示管理器。它们专为测试目的和探索CentOS Linux 7环境而设计。除非您选择从Live环境中安装CentOS Linux 7，否则它们不会修改硬盘的内容。请注意，在这种情况下，您无法更改已安装的软件包集。这需要使用yum在已安装的系统中完成。<br> <br>CentOS<span class="hljs-string">-7</span>-x86_64-Minimal<span class="hljs-string">-1804</span>.iso<br>这个image的目的是安装一个非常基本的CentOS Linux 7系统，只需要最少的软件包即可拥有一个功能系统。请将此图像刻录到CD上并启动计算机。系统上将安装一组预先选择的软件包。其他所有东西都需要使用yum安装。此映像安装的软件包集与从完整DVD映像中选择名为“Minimal”的组时安装的软件包相同。<br><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="2-系统安装"><a href="#2-系统安装" class="headerlink" title="2.系统安装"></a>2.系统安装</h2><h3 id="1-虚拟机配置"><a href="#1-虚拟机配置" class="headerlink" title="(1)虚拟机配置"></a>(1)虚拟机配置</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos1.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos2.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos3.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos4.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos5.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos6.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos7.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos8.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>此处网络配置 我选择的是使用本机的ip访问外部网络,如果不需要网络或者只在主机和虚拟机通信可以选择对应的选项.而需要独立的ip可以选择桥接模式</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos10.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos11.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos12.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos13.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos14.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos15.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-虚拟机挂载镜像"><a href="#2-虚拟机挂载镜像" class="headerlink" title="(2)虚拟机挂载镜像"></a>(2)虚拟机挂载镜像</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos16.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>此处使用到之前下载的镜像文件</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos17.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>开启虚拟机则进入安装过程</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos18.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-系统安装及初始化"><a href="#3-系统安装及初始化" class="headerlink" title="(3)系统安装及初始化"></a>(3)系统安装及初始化</h3><blockquote>
+<p>选择第一项 安装即可</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos19.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos20.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos21.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意:<strong>此处软件选择,需要图形界面选择gui图形界面,我选择最小安装则无图型界面,只有命令行,如果是初学者还是选择有gui图形界面的安装</strong></p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos22.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos23.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos24.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos25.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>注意:<strong>root密码一定要记住,最好创建一个用户,不要在root下使用(很危险)</strong></p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos26.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos27.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos28.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>重启后系统已经在运行,这里提示登录,由于刚刚已经创建了用户,可以输入用户名,回车后输入密码登录</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos29.jpg" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>到这里已经安装完成,使用<code>uname -a</code>指令看一下系统信息,这样就安装成功了</p>
+</blockquote>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos30.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4-创建系统快照-出问题可以回溯"><a href="#4-创建系统快照-出问题可以回溯" class="headerlink" title="(4)创建系统快照,出问题可以回溯"></a>(4)创建系统快照,出问题可以回溯</h3><p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos31.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/centos32.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-借鉴网址"><a href="#3-借鉴网址" class="headerlink" title="3.借鉴网址"></a>3.借鉴网址</h2><ol>
+<li>感兴趣的可以参考<a target="_blank" rel="noopener" href="https://www.haah.net/vm-station">虚拟机建站博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145102034">知乎帖子</a></li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="category-chain-item">毕业设计</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="category-chain-item">环境搭建</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux%E7%B3%BB%E7%BB%9F/">#Linux系统</a>
+      
+        <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">#环境搭建</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>vm_ware虚拟机安装CentOS7教程</div>
+      <div>http://example.com/2022/04/21/vm-ware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85CentOS7%E6%95%99%E7%A8%8B/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>silas</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/21/vm-ware-CentOS7-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E5%8F%8A%E6%8D%A2%E6%BA%90%E6%95%99%E7%A8%8B/" title="vm_ware+CentOS7 网络配置及换源教程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vm_ware+CentOS7 网络配置及换源教程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/20/A-Tune%E7%9A%84centos%E5%AE%89%E8%A3%85/" title="A-Tune的centos安装">
+                        <span class="hidden-mobile">A-Tune的centos安装</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
