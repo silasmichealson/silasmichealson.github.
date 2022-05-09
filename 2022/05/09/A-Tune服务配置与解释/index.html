@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="silas">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="A-Tune 服务配置与解释一.启动服务1.配置网卡及磁盘在安装时使用下指令安装则将检测的磁盘和网卡写入&#x2F;etc&#x2F;atuned&#x2F;atuned.cnf文件中,可以在文件中修改disk和network选指定的磁盘和网卡 12make collector-installmake install   2.启动A-Tune服务使用指令 123sudo systemctl dae">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A-Tune 服务配置与解释">
+<meta property="og:url" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/index.html">
+<meta property="og:site_name" content="silas的博客">
+<meta property="og:description" content="A-Tune 服务配置与解释一.启动服务1.配置网卡及磁盘在安装时使用下指令安装则将检测的磁盘和网卡写入&#x2F;etc&#x2F;atuned&#x2F;atuned.cnf文件中,可以在文件中修改disk和network选指定的磁盘和网卡 12make collector-installmake install   2.启动A-Tune服务使用指令 123sudo systemctl dae">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A1.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A2.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A3.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A4.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A5.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A6.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A7.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A8.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A9.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A10.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A11.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg">
+<meta property="article:published_time" content="2022-05-09T01:42:07.000Z">
+<meta property="article:modified_time" content="2022-05-09T01:43:47.737Z">
+<meta property="article:author" content="silas">
+<meta property="article:tag" content="A-Tune">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A1.jpg">
+  
+  
+  <title>A-Tune 服务配置与解释 - silas的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Silas</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="A-Tune 服务配置与解释"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-09 09:42" pubdate>
+          2022年5月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">A-Tune 服务配置与解释</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="A-Tune-服务配置与解释"><a href="#A-Tune-服务配置与解释" class="headerlink" title="A-Tune 服务配置与解释"></a>A-Tune 服务配置与解释</h1><h2 id="一-启动服务"><a href="#一-启动服务" class="headerlink" title="一.启动服务"></a>一.启动服务</h2><h3 id="1-配置网卡及磁盘"><a href="#1-配置网卡及磁盘" class="headerlink" title="1.配置网卡及磁盘"></a>1.配置网卡及磁盘</h3><p>在安装时使用下指令安装则将检测的磁盘和网卡写入&#x2F;etc&#x2F;atuned&#x2F;atuned.cnf文件中,可以在文件中修改disk和network选指定的磁盘和网卡</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">make collector-<span class="hljs-keyword">install</span><br>make <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A1.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-启动A-Tune服务"><a href="#2-启动A-Tune服务" class="headerlink" title="2.启动A-Tune服务"></a>2.启动A-Tune服务</h3><p>使用指令</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nsis">sudo <span class="hljs-params">system</span>ctl daemon-reload<br>sudo <span class="hljs-params">system</span>ctl start atuned<br>sudo <span class="hljs-params">system</span>ctl start atune-engine<br></code></pre></td></tr></table></figure>
+
+<p>查看atuned或者atuned-engine服务状态</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fortran">sudo systemctl <span class="hljs-keyword">status</span> atuned<br>sudo systemctl <span class="hljs-keyword">status</span> atune-engine<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A2.jpg" srcset="/img/loading.gif" lazyload><br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A3.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-atune-adm-命令"><a href="#3-atune-adm-命令" class="headerlink" title="3.atune-adm 命令"></a>3.atune-adm 命令</h3><p><code>atune-adm list</code>列出系统支持的profile以及当前已激活的profile</p>
+<p> <img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A4.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><code>atune-adm profile [name]</code>激活对应策略</p>
+<p><code>atune-adm analysis [options]</code>在线静态调优,实时采集系统信息进行负载类型识别并自动优化</p>
+<p><code>atune-adm tuning [OPTIONS] &lt;PROJECT_YAML&gt;</code>离线动态调优,使用指定项目文件对所选参数进行动态空间的搜索找到当前环境配置下的最优解。</p>
+<h2 id="二-离线动态调优测例"><a href="#二-离线动态调优测例" class="headerlink" title="二.离线动态调优测例"></a>二.离线动态调优测例</h2><blockquote>
+<p>以A-Tune&#x2F;examples&#x2F;tuning目录中对gcc编译器的优化为例。</p>
+</blockquote>
+<h3 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h3><p><code>sh prepare.sh</code><br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A5.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-下载stream-c-内存带宽测试程序"><a href="#2-下载stream-c-内存带宽测试程序" class="headerlink" title="2.下载stream.c 内存带宽测试程序"></a>2.下载stream.c 内存带宽测试程序</h3><p><code>wget http://www.cs.virginia.edu/stream/FTP/Code/stream.c</code></p>
+<h3 id="3-调优"><a href="#3-调优" class="headerlink" title="3.调优"></a>3.调优</h3><p><code>atune-adm tuning --project gcc_compile --detail gcc_compile_client.yaml</code><br>结果<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A6.jpg" srcset="/img/loading.gif" lazyload><br>内存带宽提升121%，编译后的可以执行文件大小减小17%。</p>
+<h3 id="4-保存结果"><a href="#4-保存结果" class="headerlink" title="4.保存结果"></a>4.保存结果</h3><p><code>atune-adm tuning --restore --project gcc_compile</code></p>
+<h2 id="三-A-Tune离线调优应用"><a href="#三-A-Tune离线调优应用" class="headerlink" title="三.A-Tune离线调优应用"></a>三.A-Tune离线调优应用</h2><p>&amp;emsp;&amp;emsp;离线动态调优包含三个输入文件：client.yaml、server.yaml和benchmark。</p>
+<ul>
+<li>client.yaml: 存放在客户端的文件，包含调优的评价指标等信息。</li>
+<li>server.yaml: 存放在服务端的文件，包含调优的可调节参数等信息。</li>
+<li>benchmark: 存放在客户端的文件，通过运行该文件以获取评价指标的具体数值。<br>这里以gcc离线动态调优为例，说明这三个文件。<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A7.jpg" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<h3 id="1-client-yaml"><a href="#1-client-yaml" class="headerlink" title="1.client.yaml"></a>1.client.yaml</h3><p>其中包含：</p>
+<blockquote>
+<p>调优算法选择(line 2)<br>迭代次数(line 3)<br>随机迭代次数(line 4)<br>benchmark执行命令(line 6)<br>评价指标1相关信息(line 8 - 13)<br>评价指标2相关信息(line 14 - end)<br>另外，还可以在client.yaml中添加参数选择：</p>
+</blockquote>
+<p>参数选择是在进行离线动态调优前执行的步骤，其目的是在进行离线动态调优前缩减参数空间，在给出的参数空间中选择出对性能影响最大的参数并进行调优。</p>
+<p>实现方法是在client.yaml中添加如下参数：</p>
+<blockquote>
+<p>feature_filter_engine: 参数选择算法<br>feature_filter_cycle: 参数选择轮数<br>feature_filter_iters: 参数选择的迭代次数<br>feature_filter_count: 每轮选择出的参数<br>split_count: 调优参数取值范围中均匀选取的参数个数</p>
+</blockquote>
+<h3 id="2-server-yaml"><a href="#2-server-yaml" class="headerlink" title="2.server.yaml"></a>2.server.yaml</h3><p><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A8.jpg" srcset="/img/loading.gif" lazyload><br>应用启动命令(line 3)<br>应用停止命令(line 4)<br>可调参数等内容(line 5 - end)</p>
+<h3 id="3-benchmark文件"><a href="#3-benchmark文件" class="headerlink" title="3.benchmark文件"></a>3.benchmark文件</h3><p><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A9.jpg" srcset="/img/loading.gif" lazyload><br>benchmark文件用于在调优执行时，会根据client.yaml中提供的命令执行此文件。  </p>
+<p>执行优化并保存结果<br>执行优化：<br><code>atune-adm tuning --project &lt;PROJECT_NAME&gt; --detail &lt;client.yaml&gt;</code></p>
+<p>保存结果：<br><code>atune-adm tuning --restore --project &lt;PROJECT_NAME&gt;</code></p>
+<h2 id="四-A-Tune使用"><a href="#四-A-Tune使用" class="headerlink" title="四.A-Tune使用"></a>四.A-Tune使用</h2><h3 id="1-总体说明"><a href="#1-总体说明" class="headerlink" title="1.总体说明"></a>1.总体说明</h3><p><code>atune-adm</code>支持的命令可以通过 <code>atune-adm help/--help/-h</code> 查询。</p>
+<p>使用方法中所有命令的使用举例都是在单机部署模式下，如果是在分布式部署模式下，需要指定服务器IP和端口号，例如：</p>
+<p><code>atune-adm -a 192.168.3.196 -p 60001 list</code><br>define、update、undefine、collection、train、upgrade不支持远程执行。</p>
+<h3 id="2-查询负载类型"><a href="#2-查询负载类型" class="headerlink" title="2.查询负载类型"></a>2.查询负载类型</h3><p>list：查询系统当前支持的profile，以及当前处于active状态的profile。</p>
+<p><code>atune-adm list </code></p>
+<h3 id="3-分析负载类型并自优化"><a href="#3-分析负载类型并自优化" class="headerlink" title="3.分析负载类型并自优化"></a>3.分析负载类型并自优化</h3><p>使用默认的模型进行应用识别，不进行自动优化</p>
+<p><code>atune-adm analysis --characterization</code><br>使用默认的模型进行应用识别，并进行自动优化</p>
+<p><code>atune-adm analysis</code><br>使用自训练的模型进行应用识别</p>
+<p><code>atune-adm analysis --model /usr/libexec/atuned/analysis/models/new-model.m</code></p>
+<h3 id="4-自定义模型"><a href="#4-自定义模型" class="headerlink" title="4.自定义模型"></a>4.自定义模型</h3><p>A-Tune支持用户定义并学习新模型。定义新模型的操作流程如下：</p>
+<p>​- 步骤 1 用define命令定义一个新应用的profile</p>
+<p>​- 步骤 2 用collection命令收集应用对应的系统数据</p>
+<p>​- 步骤 3 用train命令训练得到模型</p>
+<h4 id="4-1-define"><a href="#4-1-define" class="headerlink" title="4.1 define"></a>4.1 define</h4><p>功能描述</p>
+<p>添加用户自定义的应用场景，及对应的profile优化项。</p>
+<p>命令格式</p>
+<p><code>atune-adm define &lt;service_type&gt; &lt;application_name&gt; &lt;scenario_name&gt;&lt;profile_path&gt;</code><br>使用示例</p>
+<ul>
+<li>新增一个profile，service_type的名称为test_service，application_name的名称为test_app，scenario_name的名称为test_scenario，优化项的配置文件为example.conf。</li>
+</ul>
+<p><code>atune-adm define test_service test_app test_scenario ./example.conf</code></p>
+<h3 id="4-2-collection"><a href="#4-2-collection" class="headerlink" title="4.2 collection"></a>4.2 collection</h3><p>功能描述</p>
+<p>采集业务运行时系统的全局资源使用情况以及OS的各项状态信息，并将收集的结果保存到csv格式的输出文件中，作为模型训练的输入数据集。</p>
+<p>命令格式</p>
+<p><code>atune-adm collection &lt;OPTINOS*&gt;*</code><br>使用示例</p>
+<p><code>atune-adm collection --filename name --interval 5 --duration 1200 --output_path /home/data --disk sda --network eth0 --app_type test_type </code></p>
+<h4 id="4-3-train"><a href="#4-3-train" class="headerlink" title="4.3 train"></a>4.3 train</h4><p>功能描述</p>
+<p>使用采集的数据进行模型的训练。训练时至少采集两种应用类型的数据，否则训练会出错。</p>
+<p>命令格式</p>
+<p><code>atune-adm train &lt;OPTINOS*&gt;*</code><br>使用示例</p>
+<p>使用data目录下csv文件作为训练输入，生成的新模型new-model.m存在model目录下。</p>
+<p><code>atune-adm train --data_path /home/data --output_file /usr/libexec/atuned/analysis/models/new-model.m </code></p>
+<h4 id="4-4-undefine"><a href="#4-4-undefine" class="headerlink" title="4.4 undefine"></a>4.4 undefine</h4><p>功能描述</p>
+<p>删除用户自定义的profile。</p>
+<p>命令格式</p>
+<p><code>atune-adm undefine &lt;profile*&gt;*</code><br>使用示例</p>
+<p>删除自定义的profile。</p>
+<p><code>atune-adm undefine test_service-test_app-test_scenario</code></p>
+<h3 id="5-Profile相关操作"><a href="#5-Profile相关操作" class="headerlink" title="5. Profile相关操作"></a>5. Profile相关操作</h3><h4 id="5-1-查询profile"><a href="#5-1-查询profile" class="headerlink" title="5.1 查询profile"></a>5.1 查询profile</h4><p>功能描述</p>
+<p>查看对应的profile内容。</p>
+<p>命令格式</p>
+<p><code>atune-adm info &lt;profile*&gt;*</code><br>使用示例</p>
+<p>查看web-nginx-http-long-connection的profile内容：</p>
+<p><code>atune-adm info web-nginx-http-long-connection</code></p>
+<h4 id="5-2-更新profile"><a href="#5-2-更新profile" class="headerlink" title="5.2 更新profile"></a>5.2 更新profile</h4><p>功能描述</p>
+<p>将已有profile中原来的优化项更新为new.conf中的内容。</p>
+<p>命令格式</p>
+<p><code>atune-adm update &lt;profile*&gt;* &lt;profile_path*&gt;*</code><br>使用示例</p>
+<p>更新名为test_service-test_app-test_scenario的profile优化项为new.conf。</p>
+<p><code>atune-adm update test_service-test_app-test_scenario ./new.conf</code></p>
+<h4 id="5-3-激活profile"><a href="#5-3-激活profile" class="headerlink" title="5.3 激活profile"></a>5.3 激活profile</h4><p>功能描述:</p>
+<p>手动激活profile，使其处于active状态。</p>
+<p>命令格式</p>
+<p><code>atune-adm profile &lt;profile&gt;</code><br>使用示例</p>
+<p>激活web-nginx-http-long-connection对应的profile配置。</p>
+<p><code>atune-adm profile web-nginx-http-long-connection</code></p>
+<h4 id="5-4-回滚profile"><a href="#5-4-回滚profile" class="headerlink" title="5.4 回滚profile"></a>5.4 回滚profile</h4><p>功能描述:</p>
+<p>回退当前的配置到系统的初始配置。</p>
+<p>命令格式</p>
+<p><code>atune-adm rollback</code><br>使用示例</p>
+<p><code>atune-adm rollback</code></p>
+<h3 id="6-更新数据库"><a href="#6-更新数据库" class="headerlink" title="6. 更新数据库"></a>6. 更新数据库</h3><p>功能描述</p>
+<p>更新系统的数据库。</p>
+<p>命令格式</p>
+<p><code>atune-adm upgrade &lt;DB_FILE&gt;</code><br>使用示例</p>
+<p>数据库更新为new_sqlite.db。</p>
+<p><code>atune-adm upgrade ./new_sqlite.db</code></p>
+<h3 id="7-系统信息查询"><a href="#7-系统信息查询" class="headerlink" title="7. 系统信息查询"></a>7. 系统信息查询</h3><p>功能描述</p>
+<p>检查系统当前的cpu、bios、os、网卡等信息。</p>
+<p>命令格式</p>
+<p><code>atune-adm check</code><br>使用示例</p>
+<p><code>atune-adm check </code></p>
+<h3 id="8-参数自调优"><a href="#8-参数自调优" class="headerlink" title="8.参数自调优"></a>8.参数自调优</h3><p>功能描述</p>
+<p>使用指定的项目文件对参数进行动态空间的搜索，找到当前环境配置下的最优解。</p>
+<p>命令格式</p>
+<p><code>atune-adm tuning [OPTIONS] &lt;PROJECT_YAML&gt;</code><br>在运行命令前，确保以下条件已经满足：</p>
+<p>服务端的yaml配置文件已经编辑完成并放置于 atuned服务下的<br>**&#x2F;etc&#x2F;atuned&#x2F;tuning&#x2F;**目录中</p>
+<p>客户端的yaml配置文件已经编辑完成并放置于atuned客户端任意目录下</p>
+<p>使用示例</p>
+<p>进行tuning调优</p>
+<p><code>atune-adm tuning --project compress --detail compress_client.yaml</code><br>恢复tuning调优前的初始配置，compress为yaml文件中的项目名称</p>
+<p><code>atune-adm tuning --restore --project compress</code></p>
+<h2 id="五-A-Tune实战"><a href="#五-A-Tune实战" class="headerlink" title="五. A-Tune实战"></a>五. A-Tune实战</h2><h3 id="1-通过A-Tune优化压缩算法配置"><a href="#1-通过A-Tune优化压缩算法配置" class="headerlink" title="1.通过A-Tune优化压缩算法配置"></a>1.通过A-Tune优化压缩算法配置</h3><p>执行以下命令进入压缩文件样本目录：</p>
+<p><code>cd ~/A-Tune/examples/tuning/compress/</code><br>获取测试用例：</p>
+<p><code>wget http://cs.fit.edu/~mmahoney/compression/enwik8.zip</code><br>执行如下命令，使用prepare.sh脚本解压缩enwik8.zip文件并进行一些参数设置，例如compress_client.yaml文件中time的权重为20，compress_ratio的权重为80，表明本次优化目标偏重压缩率：</p>
+<p><code>sh prepare.sh enwik8.zip</code><br>运行结果如下图所示：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A10.jpg" srcset="/img/loading.gif" lazyload><br>说明：使用prepare.sh脚本对enwik8.zip文件进行解压缩完毕，当前目录应存在6个文件及一个文件夹，各文件的功能注解如下：</p>
+<ol>
+<li><p>enwik8.zip为压缩文件样本，</p>
+</li>
+<li><p>enwik8为enwik8.zip文件解压后的文件夹，</p>
+</li>
+<li><p>prepare.sh为执行调优前的必要准备工作，具体信息可以通过vim命令进入查看，</p>
+</li>
+<li><p>compress.py为本次调优的基准。compress.py文件通过bz2、zlib、gzip中的一种方式对enwik8文件进行压缩。compress.py文件的执行时间将作为调优的评价指标之一，即compress.py文件执行时间越短，调优效果越好，</p>
+</li>
+<li><p>compress_client.yaml文件记录本次调优的评价指标，有time和compress_ratio两个评价指标，</p>
+</li>
+<li><p>compress_server.yaml文件记录本次调优的可调节项，有compressLevel和compressMethod两个可调节项。</p>
+</li>
+</ol>
+<p>执行以下命令进行查看：<br><code>ls -la</code><br>文件列表如下图所示：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A11.jpg" srcset="/img/loading.gif" lazyload><br>继续执行以下命令，查看压缩算法的基线性能：</p>
+<p><code>python3 compress.py</code><br>查看压缩算法的基线性能输出结果，如下图所示：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg" srcset="/img/loading.gif" lazyload><br>说明：通过压缩时间和压缩比例两个维度来衡量，图中时间花费4.6s左右，压缩后文件体积缩小2.7倍左右。后续步骤会对压缩算法进行调优，目标是降低时间花费，并增大压缩前后文件大小的比例。</p>
+<p><strong>注意：压缩算法的基线性能可能会因为具体的运行环境而有所不同。</strong></p>
+<p>执行以下命令对compress.py文件进行备份：<br><code>cp compress.py&#123;,.bak&#125;</code><br>说明：在进行调优时，compress.py文件中的COMPRESS_LEVEL和COMPRESS_METHOD两个值(12、13行)将会作为可调节项发生变更，因此在调节前备份此文件，有利于进行调优后与调优前的参数对比。</p>
+<p>执行以下命令(约【2分钟】)，进行调优以找到最优配置：</p>
+<p><code>atune-adm tuning --project compress --detail compress_client.yaml</code><br>最终结果如下图所示，其中1为调优性能及参数，2为基线性能：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg" srcset="/img/loading.gif" lazyload><br> 以上调优结果反映在了参数compressLevel和compressMethod的设置上，执行以下命令对比调优前后的compress.py文件：</p>
+<p>注意：对比结果可能会因为具体的运行环境而有所不同。</p>
+<p><code>diff compress.py compress.py.bak</code><br>对比结果如下图所示，图中可看到调优前后compressLevel的值有所区别，调优前compressLevel的值为1，调优后则为6，说明本次性能调优通过改变compressLevel的值提高了压缩算法的性能：</p>
+<p> 说明：执行调优时的各项参数解释如下：</p>
+<ol>
+<li>评价指标，存于compress_client.yaml文件中，通过评价指标可以直观的看出性能优劣。</li>
+</ol>
+<ul>
+<li><p>time：enwik8文件夹压缩时间，时间越短则性能越好；</p>
+</li>
+<li><p>compress_ratio：enwik8文件夹压缩前后的size大小，比例越大则压缩后文件占内存空间越小，说明压缩效果越好。</p>
+</li>
+</ul>
+<ol start="2">
+<li>可调节项，存于compress_server.yaml文件中，单看可调节项的变化无法判断性能优劣，而是在每次修改可调节项后查看评价指标，基于评价指标的变化判断性能有无增长。</li>
+</ol>
+<ul>
+<li><p>compressLevel：压缩等级，是调优的可调节项之一，本次调优共设九个等级，对应数值1~9；</p>
+</li>
+<li><p>compressMethod——压缩方式，是调优的可调节项之一，本次调优共设三种压缩方式，分别为bz2、zlib、gzip。</p>
+</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="category-chain-item">毕业设计</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/A-Tune/" class="category-chain-item">A-Tune</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/A-Tune/">#A-Tune</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>A-Tune 服务配置与解释</div>
+      <div>http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>silas</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月9日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/30/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/" title="HTTP权威指南-读书笔记-第一部分">
+                        <span class="hidden-mobile">HTTP权威指南-读书笔记-第一部分</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
