@@ -35,9 +35,10 @@
 <meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A10.jpg">
 <meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A11.jpg">
 <meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg">
-<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A13.jpg">
+<meta property="og:image" content="http://example.com/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A14.jpg">
 <meta property="article:published_time" content="2022-05-09T01:42:07.000Z">
-<meta property="article:modified_time" content="2022-05-09T01:43:47.737Z">
+<meta property="article:modified_time" content="2022-05-09T02:14:09.225Z">
 <meta property="article:author" content="silas">
 <meta property="article:tag" content="A-Tune">
 <meta name="twitter:card" content="summary_large_image">
@@ -336,11 +337,9 @@
 <p>添加用户自定义的应用场景，及对应的profile优化项。</p>
 <p>命令格式</p>
 <p><code>atune-adm define &lt;service_type&gt; &lt;application_name&gt; &lt;scenario_name&gt;&lt;profile_path&gt;</code><br>使用示例</p>
-<ul>
-<li>新增一个profile，service_type的名称为test_service，application_name的名称为test_app，scenario_name的名称为test_scenario，优化项的配置文件为example.conf。</li>
-</ul>
+<p>新增一个profile，service_type的名称为test_service，application_name的名称为test_app，scenario_name的名称为test_scenario，优化项的配置文件为example.conf。</p>
 <p><code>atune-adm define test_service test_app test_scenario ./example.conf</code></p>
-<h3 id="4-2-collection"><a href="#4-2-collection" class="headerlink" title="4.2 collection"></a>4.2 collection</h3><p>功能描述</p>
+<h4 id="4-2-collection"><a href="#4-2-collection" class="headerlink" title="4.2 collection"></a>4.2 collection</h4><p>功能描述</p>
 <p>采集业务运行时系统的全局资源使用情况以及OS的各项状态信息，并将收集的结果保存到csv格式的输出文件中，作为模型训练的输入数据集。</p>
 <p>命令格式</p>
 <p><code>atune-adm collection &lt;OPTINOS*&gt;*</code><br>使用示例</p>
@@ -424,9 +423,9 @@
 <p><strong>注意：压缩算法的基线性能可能会因为具体的运行环境而有所不同。</strong></p>
 <p>执行以下命令对compress.py文件进行备份：<br><code>cp compress.py&#123;,.bak&#125;</code><br>说明：在进行调优时，compress.py文件中的COMPRESS_LEVEL和COMPRESS_METHOD两个值(12、13行)将会作为可调节项发生变更，因此在调节前备份此文件，有利于进行调优后与调优前的参数对比。</p>
 <p>执行以下命令(约【2分钟】)，进行调优以找到最优配置：</p>
-<p><code>atune-adm tuning --project compress --detail compress_client.yaml</code><br>最终结果如下图所示，其中1为调优性能及参数，2为基线性能：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A12.jpg" srcset="/img/loading.gif" lazyload><br> 以上调优结果反映在了参数compressLevel和compressMethod的设置上，执行以下命令对比调优前后的compress.py文件：</p>
+<p><code>atune-adm tuning --project compress --detail compress_client.yaml</code><br>最终结果如下图所示，其中1为调优性能及参数，2为基线性能：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A13.jpg" srcset="/img/loading.gif" lazyload><br> 以上调优结果反映在了参数compressLevel和compressMethod的设置上，执行以下命令对比调优前后的compress.py文件：</p>
 <p>注意：对比结果可能会因为具体的运行环境而有所不同。</p>
-<p><code>diff compress.py compress.py.bak</code><br>对比结果如下图所示，图中可看到调优前后compressLevel的值有所区别，调优前compressLevel的值为1，调优后则为6，说明本次性能调优通过改变compressLevel的值提高了压缩算法的性能：</p>
+<p><code>diff compress.py compress.py.bak</code><br>对比结果如下图所示，图中可看到调优前后compressLevel的值有所区别，调优前compressLevel的值为1，调优后则为6，说明本次性能调优通过改变compressLevel的值提高了压缩算法的性能：<br><img src="/2022/05/09/A-Tune%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%A7%A3%E9%87%8A/A14.jpg" srcset="/img/loading.gif" lazyload></p>
 <p> 说明：执行调优时的各项参数解释如下：</p>
 <ol>
 <li>评价指标，存于compress_client.yaml文件中，通过评价指标可以直观的看出性能优劣。</li>
